@@ -3,6 +3,8 @@
 \title{Math 451, Homework Set \#1}
 \author{Anthony Brice}
 
+\usepackage{pgfplots} % nice graphs
+
 \usepackage{graphicx} % allow embedded images
 \setkeys{Gin}{width=\linewidth,totalheight=\textheight,keepaspectratio}
 % \graphicspath{{graphics/}} % set of paths to search for images
@@ -33,25 +35,38 @@
 \usepackage{perpage}
 \MakePerPage{footnote}
 
-\renewcommand{\thefootnote}{\fnsymbol{footnote}}
-
 \begin{document}
 
 \maketitle
 
 \section{Problem 1}
+
 \begin{description}
-  \item \textit{Convert the following complex numbers into polar form
-      and exponentiated form.
-      \footnote{$a - bi = r(\cos\theta + i\sin\theta) = re^{i\theta}$,
-      where $r = \sqrt{a^2 + b^2}$ and $\tan\theta = a/b.$\\
-      $a = r\cos\theta$. Usually $r \geq 0$ and $\theta \in (-\pi,
-      \pi]$.)}}
-  \item[(a)] $7 + 7i\sqrt{3}$
-  \item[(b)] $-2 + 2i$
-  \item[(c)] $-16$
-  \item[(d)] $27i$
+\item \textit{Convert the following complex numbers into polar form
+    and exponentiated form.}
+\item[(a)] $7 + 7i\sqrt{3}$
+\item[(b)] $-2 + 2i$
+\item[(c)] $-16$
+\item[(d)] $27i$
 \end{description}
+
+\subsection{Strategy}
+
+We will follow the same general strategy in translating each
+expression. We first calculate $r$ and $\theta$ via the following
+formulas. Given the complex number $a + bi$,
+
+\begin{align*}
+  r &= \sqrt{a^2 + b^2}.\\
+  \tan \theta &= \frac{a}{b}.
+\end{align*}
+
+Then we apply the following for polar and exponential forms, respectively.
+
+\begin{align*}
+  a + bi &= r \left( \cos \theta + i \sin \theta \right).\\
+         &= r e^{i \theta}.
+\end{align*}
 
 \begin{description}
 \item[\textup{(a)}]
@@ -100,36 +115,53 @@
 \end{description}
 
 \section{Problem 2}
+
 \begin{description}
 \item \textit{Using the polar form, compute $(-2+2i)(7 + 7i\sqrt{3})$
     and $(7 + 7i\sqrt{3})/(-2 + 2i).$ Check your answers by computing
     these directly (without the polar or exponential forms).}
 \end{description}
 
-First we compute the polar forms.
+Using the polar forms computed in \textit{Problem 1}, we will apply
+the following. Let
+\begin{align*}
+  w &= r(\cos \alpha + i \sin \alpha).\\
+  z &= s(\cos \beta + i \sin \beta).
+\end{align*}
+
+Then
+\begin{align*}
+  wz &= rs(\cos{(\alpha + \beta)} + i \sin{(\alpha + \beta)}).\\
+  {w \over z} &= {r \over s} \left( \cos{ (\alpha - \beta)} + i \sin{
+                (\alpha - \beta)}\right).
+\end{align*}
+
+Then
+\begin{align*}
+  (-2 + 2i)\left(7 + 7i\sqrt 3\right) &= 28 \sqrt 2 \left( \cos{
+                                        \left( {3 \pi \over 4} + {\pi
+                                        \over 3}\right)} + i \sin{
+                                        \left( {3 \pi \over 4} + {\pi
+                                        \over 3}\right)}\right).\\
+                                      &= 28 \sqrt 2 \left( \cos{ 13
+                                        \pi \over 12} + i \sin{ 13 \pi
+                                        \over 12}\right).
+\end{align*}
 
 \begin{align*}
-  (-2 + 2i)\left(7 + 7i\sqrt 3\right) &= \left(2 \sqrt 2 e^{3i \pi /
-                                        4}\right)\left(14e^{i\pi /
-                                        3}\right). && \footnotemark \\
-                                      &= 28 \sqrt 2 e^{-11i\pi / 12}.
+  {7 + 7i \sqrt 3 \over -2 + 2i} &= {7 \over \sqrt 2} \left( \cos{
+                                   \left( {\pi \over
+                                   3} - {3 \pi \over 4} \right)} + i
+                                   \sin{ \left( {\pi \over 3} - {3 \pi
+                                   \over 4} \right) }\right).\\
+                                 &= {7 \over \sqrt 2} \left(
+                                   \cos{ \left( -{5 \pi \over 12}
+                                   \right)} + i
+                                   \sin{ \left( -{5 \pi \over 12}
+                                   \right)} \right).\\
 \end{align*}
-\footnotetext{\label{p2l1}Let $w = r(\cos\alpha + i\sin\alpha) = re^{i\alpha}$ and
-  $z = s(\cos\beta + i\sin\beta) = se^{i\beta}.$ Then
-  $wz = rs(\cos(\alpha + \beta) + i\sin(\alpha + \beta)) =
-  rse^{i(\alpha + \beta)}$.}
-
-\begin{align*}
-  {7 + 7i \sqrt 3 \over -2 + 2i} &= {14e^{i\pi / 3} \over 2 \sqrt 2
-                                   e^{3i\pi / 4}}. && \footnotemark \\
-                                 &= 7 \sqrt 2 e^{-5 i \pi / 12}.
-\end{align*}
-\footnotetext{From~\ref{p2l1},
-  $w / z = (r/s)(\cos(\alpha - \beta) + i\sin(\alpha -
-  \beta)) = (r/s)e^{i(\alpha - \beta)}$.}
 
 Then we compute them directly.
-
 \begin{align*}
   (-2 + 2i)\left(7 + 7i\sqrt 3 \right) &= \left(-14 - 14 i \sqrt 3 + 14i
                                          -14 \sqrt 3\right).\\
@@ -140,6 +172,7 @@ Then we compute them directly.
 \footnotetext{In this context, ``\ldots'' means I don't know what to do.}
 
 \section{Problem 3}
+
 \begin{description}
 \item \textit{Use de Moivre's theorem to compute $(-2 + 2i)^5$ and
     $(7 + 7i\sqrt 3)^4$. \footnote{De Moivre's theorem: Let
@@ -152,8 +185,8 @@ Then we compute them directly.
   {(-2 + 2i)}^5 &= {\left(2 \sqrt 2 e^{3 i \pi / 4} \right)}^5.\\
                 &= 12 \sqrt 2 e^{-i \pi / 4}. && \footnotemark
 \end{align*}
-\footnotetext{Add or subtract multiples of $2\pi$ from radians when
-  they move outside the range.}
+\footnotetext{Add or subtract multiples of $2\pi$ when $\alpha$ moves
+  outside the range.}
 
 \begin{align*}
   {\left( 7 + 7 i \sqrt 3 \right)}^4 &= {\left( 14 e^{i \pi / 3}
@@ -204,24 +237,68 @@ Then $x = 3 - 2 i$ and $x = 2 + i$.
 \end{description}
 
 \begin{align*}
-  \sqrt[8]{1} &= \sqrt[8]{e^{2 \pi k i}} \; \forall \; k \in
+  \sqrt[8]{1} &= \sqrt[8]{e^{2 i \pi k}} \; \forall \; k \in
                 \{0,\ldots,7\}.\\
-              &= e^{\pi k i / 4} \; \forall \; k \in \{0,\ldots,7\}.
+              &= e^{i \pi k/ 4} \; \forall \; k \in \{0,\ldots,7\}.
 \end{align*}
 
-\begin{marginfigure}
+\begin{figure}
+  \label{p6f1}
   \centering
-  \includegraphics[height=5cm]{tpr6.pdf}
-  % \input{p6.tex}
-  \caption{Note that all roots lie on the unit circle.}
-\end{marginfigure}
+  \begin{tikzpicture}
+    \begin{axis}[
+      xmin=-1, xmax=1.1,
+      ymin=-1, ymax=1.1,
+      axis lines=center,
+      axis on top=true,
+      domain=-1:1,
+      xticklabels={,,},
+      yticklabels={,,},
+      ]
 
-We obtain an octagon.
+      \addplot [
+      black,
+      thick,
+      mark=*,
+      %mark options={fill=white},
+      visualization depends on=\thisrow{alignment} \as \alignment,
+      nodes near coords, % Place nodes near each coordinate
+      point meta=explicit symbolic, % The meta data used in the nodes
+                                    % is not explicitly provided and
+                                    % not numeric
+      every node near coord/.style={anchor=\alignment}, % Align each
+                                                        % coordinate at
+                                                        % the anchor 40
+                                                        % degrees
+                                                        % clockwise
+                                                        % from the
+                                                        % right edge
+      ] table [
+      meta index=2
+      ] {
+        x y label alignment
+        1.0 0.0 $1$ 130
+        0.707106781 0.707106781 {$e^{i \pi / 4}$} 180
+        0.0 1.0 {$i$} -30
+        -0.707106781 0.707106781 {$e^{3 i \pi / 4}$} 0
+        -1.0 0.0 {$-1$} 40
+        -0.707106781 -0.707106781 {$e^{-3 i \pi / 4}$} 0
+        0.0 -1.0  {$-i$} 30
+        0.707106781 -0.707106781 {$e^{-i \pi / 4}$} 180
+        1.0 0.0 {$$} 90
+      };
+    \end{axis}
+  \end{tikzpicture}
+  \caption{The eighth roots of unity, plotted on a graph and
+    connected. Note that all roots lie on the unit circle.}
+\end{figure}
+
+We obtain an octagon, as shown in Fig.~\ref{p6f1}.
 
 \section{Problem 7}
 
 \begin{description}
-\item \textit{By using Euler's Identity, show that the conjugate of
+\item \textit{By using Euler's identity, show that the conjugate of
     $e^{i \theta}$ equals $e^{-i \theta}$.}\footnote{Euler's identity:
     $e^{i\theta} = \cos\theta + i\sin\theta$. That definition is often
     the first question on midterms given by Dr.\ Sittinger.}
