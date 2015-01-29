@@ -27,6 +27,8 @@
 \newenvironment{docspec}{\begin{quote}\noindent}{\end{quote}}% command
                                 % specification environment
 \newcommand{\e}[1]{\ensuremath{\times 10^{#1}}} % Macro for scientific notation
+\usepackage{enumitem} % nice lists
+
 
 % Use fancy symbols for footnotes
 \usepackage{hyperref}
@@ -41,26 +43,26 @@
 
 \section{Problem 1}
 
-\begin{description}
-\item \textit{Convert the following complex numbers into polar form
+\emph{Convert the following complex numbers into polar form
     and exponentiated form.}
-\item[(a)] $7 + 7i\sqrt{3}$.
-\item[(b)] $-2 + 2i$.
-\item[(c)] $-16$.
-\item[(d)] $27i$.
-\end{description}
+\begin{enumerate}[label=\emph{(\alph*)}]
+\item $7 + 7i\sqrt{3}$.
+\item $-2 + 2i$.
+\item $-16$.
+\item $27i$.
+\end{enumerate}
+
+\bigskip
 
 We will follow the same general strategy in translating each
 expression. We first calculate $r$ and $\theta$ via the following
 formulas. Given the complex number $a + bi$,
-
 \begin{align*}
   r &= \sqrt{a^2 + b^2}\\
   \tan \theta &= \frac{a}{b}.
 \end{align*}
 
 Then we apply the following for polar and exponential forms, respectively.
-
 \begin{align*}
   a + bi &= r \left( \cos \theta + i \sin \theta \right)\\
          &= r e^{i \theta}.
@@ -114,11 +116,11 @@ Then we apply the following for polar and exponential forms, respectively.
 
 \section{Problem 2}
 
-\begin{description}
-\item \textit{Using the polar form, compute $(-2+2i)(7 + 7i\sqrt{3})$
+\emph{Using the polar form, compute $(-2+2i)(7 + 7i\sqrt{3})$
     and $(7 + 7i\sqrt{3})/(-2 + 2i).$ Check your answers by computing
     these directly (without the polar or exponential forms).}
-\end{description}
+
+\bigskip
 
 Using the polar forms computed in \textit{Problem 1}, we will apply
 the following. Let
@@ -171,13 +173,13 @@ Then we compute them directly.
 
 \section{Problem 3}
 
-\begin{description}
-\item \textit{Use de Moivre's theorem to compute $(-2 + 2i)^5$ and
+\emph{Use de Moivre's theorem to compute $(-2 + 2i)^5$ and
     $(7 + 7i\sqrt 3)^4$. \footnote{De Moivre's theorem: Let
       $w = r(\cos\alpha + i\sin\alpha) = re^{i\alpha}.$ Then
       $w^n = r^n(\cos(n\alpha) + i\sin(n\alpha)) = r^n
       e^{in\alpha}$.}}
-\end{description}
+
+\bigskip
 
 \begin{align*}
   {(-2 + 2i)}^5 &= {\left(2 \sqrt 2 e^{3 i \pi / 4} \right)}^5\\
@@ -192,12 +194,13 @@ Then we compute them directly.
                                      &= 38416 e^{-2 i \pi / 3}.
 \end{align*}
 
+\samepage{
 \section{Problem 4}
 
-\begin{description}
-\item \textit{Find all cube roots of $27i$, and all fourth roots of
+\emph{Find all cube roots of $27i$, and all fourth roots of
     $-16$.}
-\end{description}
+
+\bigskip
 
 \begin{align*}
   \sqrt[3]{27 i} &= \sqrt[3]{27 e^{i (\pi / 2 + 2 \pi k)}} \; \forall
@@ -212,32 +215,48 @@ Then we compute them directly.
   \sqrt[4]{-16} &= \sqrt[4]{16e^{i(\pi + 2\pi k)}} \; \forall \; k \in \{0,1,2,3\}\\
                 &= 2e^{i(\pi / 4 + \pi k / 2)} \; \forall \; k \in \{0,1,2,3\}.
 \end{align*}
+}
 
 \section{Problem 5}
 
-\begin{description}
-\item \textit{Use the quadratic formula to solve
-    $x^2 - (5 - i)x + (8 - 1) = 0$.}
-\end{description}
+\emph{Use the quadratic formula to solve
+  $x^2 - (5 - i)x + (8 - i) = 0$.}
+
+\bigskip
 
 \begin{align*}
   x &= {5 - i \pm \sqrt{(5 - i)^2 + 4(8 - i)} \over 2}\\
-    &= {5 \over 2} - {i \over 2} \pm {1 \over 2} - {3 i \over 2}.
+    &= {5 - i \pm \sqrt{-8 - 6i} \over 2}.\\
+\end{align*}
+
+Let $a + bi = \sqrt{-8 - 6i}$ for some $a, b \in \mathbb{R}$.
+
+\begin{align*}
+  {(a + bi)}^2 &= -8 - 6i\\
+               &\Rightarrow (a^2 - b^2) + 2abi = -8 + 6i\\
+               &\Rightarrow a^2 -b^2 = -8\\
+               &\Rightarrow 2ab = -6.\\
+\end{align*}
+
+Then solve for $a$ and $b$ and apply.
+
+\begin{align*}
+  x &= {5 - i \pm (1 - 3i) \over 2}.\\
 \end{align*}
 
 Then $x = 3 - 2 i$ and $x = 2 + i$.
 
 \section{Problem 6}
 
-\begin{description}
-\item \textit{Compute the eighth roots of unity. Plot them on a graph and
+\emph{Compute the eighth roots of unity. Plot them on a graph and
   connect these points. What shape do you obtain?}
-\end{description}
+
+\bigskip
 
 \begin{align*}
   \sqrt[8]{1} &= \sqrt[8]{e^{2 i \pi k}} \; \forall \; k \in
                 \{0,\ldots,7\}\\
-              &= e^{i \pi k/ 4} \; \forall \; k \in \{0,\ldots,7\}.
+              &= e^{i \pi k/ 4} \; \forall \; k \in \{0,\ldots,7\}.\\
 \end{align*}
 
 \begin{figure}[h]
@@ -283,7 +302,7 @@ Then $x = 3 - 2 i$ and $x = 2 + i$.
         -0.707106781 -0.707106781 {$e^{-3 i \pi / 4}$} 0
         0.0 -1.0  {$-i$} 30
         0.707106781 -0.707106781 {$e^{-i \pi / 4}$} 180
-        1.0 0.0 {$$} 90
+        1.0 0.0 {} 90
       };
     \end{axis}
   \end{tikzpicture}
@@ -295,12 +314,12 @@ We obtain an octagon, as shown in Fig.~\ref{p6f1}.
 
 \section{Problem 7}
 
-\begin{description}
-\item \textit{By using Euler's identity, show that the conjugate of
-    $e^{i \theta}$ equals $e^{-i \theta}$.}\footnote{Euler's identity:
-    $e^{i\theta} = \cos\theta + i\sin\theta$. That definition is often
-    the first question on midterms given by Dr.\ Sittinger.}
-\end{description}
+\emph{By using Euler's identity, show that the conjugate of
+  $e^{i \theta}$ equals $e^{-i \theta}$.}\footnote{Euler's identity:
+  $e^{i\theta} = \cos\theta + i\sin\theta$. That definition is often
+  the first question on midterms given by Dr.\ Sittinger.}
+
+\bigskip
 
 \begin{align*}
   \overline{e^{i \theta}} &= \overline{\cos \theta + i \sin \theta}\\
