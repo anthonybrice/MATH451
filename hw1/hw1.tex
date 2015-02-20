@@ -29,6 +29,10 @@
 \newcommand{\e}[1]{\ensuremath{\times 10^{#1}}} % Macro for scientific notation
 \usepackage{enumitem} % nice lists
 
+\usepackage{concrete}
+\usepackage[euler-digits,euler-hat-accent]{eulervm}
+\usepackage{microtype}
+
 
 % Use fancy symbols for footnotes
 \usepackage{hyperref}
@@ -68,8 +72,8 @@ Then we apply the following for polar and exponential forms, respectively.
          &= r e^{i \theta}.
 \end{align*}
 
-\begin{description}
-\item[\textup{(a)}]
+\begin{enumerate}[label=(\alph*)]
+\item
   \begin{align*}
     7 + 7i\sqrt{3} &\Rightarrow r=\sqrt{7^2 +
                      {\left(7\sqrt{3}\right)}^2}, \, \tan\theta =
@@ -83,7 +87,7 @@ Then we apply the following for polar and exponential forms, respectively.
   \footnotetext{$\tan\theta = \sqrt{3}\Rightarrow \arctan\sqrt{3} =
     \theta$.}
 
-\item[\textup{(b)}]
+\item
   \begin{align*}
     -2 + 2i &\Rightarrow r = \sqrt{(-2)^2 + 2^2}, \, \tan \theta =
               -1\\
@@ -96,7 +100,7 @@ Then we apply the following for polar and exponential forms, respectively.
   \footnotetext{$\theta \neq -\frac{\pi}{4}.$ $a < 0$ and $b > 0,$ so
     we are in the second quadrant.}
 
-\item[\textup{(c)}]
+\item
   \begin{align*}
     -16 &\Rightarrow r = 16, \, \tan \theta = 0\\
         &\Rightarrow \theta = \pi\\
@@ -105,14 +109,14 @@ Then we apply the following for polar and exponential forms, respectively.
         &= 16e^{i\pi}.
   \end{align*}
 
-\item[\textup{(d)}]
+\item
   \begin{align*}
     27i &= 27i \sin {\pi \over 2} && \footnotemark\\
-        &= 27e^{i\pi / 2}
+        &= 27e^{i\pi / 2}.
   \end{align*}
   \footnotetext{$\theta = \frac{\pi}{2}$ because we in the complex
     domain, baby.}
-\end{description}
+\end{enumerate}
 
 \section{Problem 2}
 
